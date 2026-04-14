@@ -3,7 +3,7 @@ from ollama import Client
 
 client = Client(
     host='http://localhost:11434',  # or your actual cloud endpoint
-    headers={'Authorization': 'Bearer ' + os.environ.get('OLLAMA_API_KEY', 'ENTER YOUR OLLAMA API KEY HERE https://ollama.com/settings/keys')}
+    headers={'Authorization': 'Bearer ' + os.environ.get('OLLAMA_API_KEY',)}
 )
 
 messages = [
