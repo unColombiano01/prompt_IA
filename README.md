@@ -1,6 +1,6 @@
 ## Requisitos previos
  
-Instala la librería e inicia sesión en Ollama:
+Instala la librería dentro del repositorio e inicia sesión en Ollama:
  
 ```bash
 pip install ollama
