@@ -1,4 +1,10 @@
-from ollama import chat
+import os
+from ollama import Client
+
+client = Client(
+    host='http://localhost:11434',  # or your actual cloud endpoint
+    headers={'Authorization': 'Bearer ' + os.environ.get('OLLAMA_API_KEY', 'ENTER YOUR OLLAMA API KEY HERE https://ollama.com/settings/keys')}
+)
 
 messages = [
     {'role': 'system', 'content': 'Responde siempre en español de forma clara.'}
@@ -6,16 +12,11 @@ messages = [
 
 def enviar_mensaje(user_input):
     global messages
-
     messages.append({'role': 'user', 'content': user_input})
-
-    response = chat(
-        model='mistral',
+    response = client.chat(
+        model='gpt-oss:120b-cloud',
         messages=messages,
     )
-
-    reply = response['message']['content']
-
+    reply = response.message.content
     messages.append({'role': 'assistant', 'content': reply})
-
     return reply
